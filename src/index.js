@@ -4,7 +4,7 @@
 
 // no primitivos: object, array, function
 
-"use strict"; // modo estricto qque ayuda a evitar errores comunes, como variables no declaradas
+"use strict"; // modo estricto que ayuda a evitar errores comunes, como variables no declaradas
 
 const s = "hola mundo"; // string
 const n = 42; // number
