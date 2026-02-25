@@ -34,8 +34,8 @@ console.log(typeof sym); // symbol
 let x = 10;
 // x = 20; // Esto causará un error porque no se puede reasignar una variable const
 
-const obj = { name: "Alice" };
-obj.name = "Bob"; // Esto es permitido, ya que estamos modificando una propiedad del objeto, no reasignando la variable obj
+const objeto = { name: "Alice" };
+objeto.name = "Bob"; // Esto es permitido, ya que estamos modificando una propiedad del objeto, no reasignando la variable obj
 
 // let  permite reasignacion de valor, es decir, puedes cambiar el valor de una variable declarada con let después de haberla asignado.
 
@@ -146,7 +146,7 @@ console.log(x=="10");
 console.log("ejemplo 4");//indica número de ejemplo
 
 input = "5";
-m = Number(input);//coerción explícita
+let m = Number(input);//coerción explícita
 
 console.log((m+5)/2);   //operación con variable asignada
 

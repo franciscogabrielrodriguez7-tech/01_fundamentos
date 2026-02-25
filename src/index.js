@@ -95,11 +95,14 @@ function recomendacion(estado) {
             return "";
     }
 }
+// la función anterior evalúa el estado y genera recomedaciones según el resultado
 
 // MOSTRAR REPORTE EN CONSOLA
 
 console.table(ingresos);
 console.table(gastos);
+
+// la función anterior genera una tabla con los datos tratados anteriormente
 
 console.group ("Resumen Financiero");
 console.log(`Total Ingresos: ${totalIngresos}`);
@@ -107,4 +110,4 @@ console.log(`Total Gastos: ${totalGastos}`);
 console.log(`Balance: ${balance}`);
 console.log(`Estado Financiero: ${getEstadoFinanciero(balance)}`);
 console.log(`Recomendación: ${recomendacion(getEstadoFinanciero(balance))}`);
-console.groupEnd();
+console.groupEnd();   // la anterior función muestra el resumen financiero organizando los datos ya tratados
