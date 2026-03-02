@@ -1,111 +1,131 @@
-"use strict";
+"use strict";//impone reglas más rigurosas para escribir código más seguro, limpio y eficiente.
+// if:
+// .some:
+// return:
+// .table:
 
-let magnitud = "temperatura";
-let unidadmedida ="°F";
-let cantidad = Number("-40");
+let magnitud = "temperatura";   //asignamos la variable magnitud
+let unidadmedida ="grados celcius";         //asignamos la variable de tipo de unidad de medida
+let cantidad = Number("-273.15");   //asignamos la variable de cantidad de unidades
 
-let longitud = [ 
-    // unidades de longitud 
-    { valor:0.01,unidad: "centimetros", simbolo: "cm",equivalencia:100},
-    { valor:1,unidad: "metros", simbolo: "m",equivalencia:1},
-    { valor:1000,unidad: "kilometros", simbolo: "km",equivalencia:0.001},
+let longitud = [                // unidades de longitud 
+    { valor:0.01,unidad: "centimetros", simbolo: "cm",equivalencia:100},    //unidades para la conversión
+    { valor:1,unidad: "metros", simbolo: "m",equivalencia:1},               //unidades para la conversión
+    { valor:1000,unidad: "kilometros", simbolo: "km",equivalencia:0.001},   //unidades para la conversión
 ];
-let temperatura = [    
-    // unidades de temperatura 
-    { valor:32,unidad: "grados farenheit", simbolo:"°F",equivalencia:(1 * 9/5) + 32},
-    { valor:0,unidad: "grados centigrados", simbolo:"°C",equivalencia:1       },
-    { valor:0,unidad: "grados celcius", simbolo: "°C",equivalencia:1 },
-    { valor:-273.15,unidad: "kelvin", simbolo: "K",equivalencia:274.15},
+let temperatura = [             // unidades de temperatura 
+    { valor:32,unidad: "grados farenheit", simbolo:"°F",equivalencia:(1 * 9/5) + 32},//unidades para la conversión
+    { valor:0,unidad: "grados centigrados", simbolo:"°C",equivalencia:1 },  //unidades para la conversión
+    { valor:0,unidad: "grados celcius", simbolo: "°C",equivalencia:1 },     //unidades para la conversión
+    { valor:-273.15,unidad: "kelvin", simbolo: "K",equivalencia:274.15},    //unidades para la conversión
 ];    
-let masa = [    
-    // unidades de masa 
-    { valor:1000,unidad: "gramos", simbolo: "g",equivalencia:1000},
-    { valor:1,unidad: "kilogramos", simbolo: "kg",equivalencia:1},
-    { valor:0.001,unidad: "toneladas", simbolo: "ton",equivalencia:0.001},
+let masa = [                    // unidades de masa 
+    { valor:1000,unidad: "gramos", simbolo: "g",equivalencia:1000},         //unidades para la conversión
+    { valor:1,unidad: "kilogramos", simbolo: "kg",equivalencia:1},          //unidades para la conversión
+    { valor:0.001,unidad: "toneladas", simbolo: "ton",equivalencia:0.001},  //unidades para la conversión
 ];
 
 
 
-function validarmagnitud(magnitud){
+function validarmagnitud(magnitud){ //función para validar la magnitud
 if ( magnitud === "temperatura" || magnitud === "masa" ||magnitud === "longitud"
-){   return `muy bien, convertiremos ${magnitud}`;
+){  console.log(`muy bien, convertiremos ${magnitud}`);// corre cuando la maagnitud coincide
+    return validarunidad(unidadmedida) 
 }
 else if (magnitud == 0){
-    return`no ingresaste magnitud`;
+    console.log(`no ingresaste magnitud`);// corre cuando no se ingresa magnitud
+    return
 } 
 else { 
-    return `error: ${magnitud} no es compatible`;
+    console.log(`error: ${magnitud} no es compatible`);// corre cuando la magnitud no coincide 
+    return `error: ${magnitud} no es compatible`;// corre cuando la magnitud no coincide 
 }
 }
+// la función anterior valida la magnitud por medio de los condicionales if, else if, else 
 
-
-function validarunidad(unidadmedida) {
+function validarunidad(unidadmedida) {//función para validar la unidad de medida
+console.log("ahora dame las unidades");
 if (unidadmedida == 0){
-    return `no ingresaste unidad de medida`;
+    console.log(`no ingresaste unidad de medida`); // corre cuando no se ingresa una unidad de medida
+    return 
 } 
-else if (magnitud === "longitud") {   
+else if (magnitud === "longitud") {  
     const validarunidad = longitud.some(longitud => longitud.unidad === unidadmedida|| longitud.simbolo === unidadmedida);
     if (validarunidad === true){
-        return`bien, la unidad que elegiste son ${unidadmedida}`;
+        console.log(`bien, la unidad que elegiste son ${unidadmedida}`);// corre si la magnitud es longitud y la unidad coincide con alguno de los elementos del array longitud
+        return validarcantidad(cantidad)  
 }
     else {
-        return`error: ${unidadmedida} no es compatible`;
+        console.log(`error: ${unidadmedida} no es compatible`); // corre si la magnitud es longitud pero la unidad no coincide
+        return;
 }
 }
 else if (magnitud === "temperatura") {
        const validarunidad = temperatura.some(temperatura => temperatura.unidad === unidadmedida|| temperatura.simbolo === unidadmedida);
     if (validarunidad === true){
-        return`bien, la unidad que elegiste son ${unidadmedida}`;
+        `bien, la unidad que elegiste son ${unidadmedida}`;// corre si la magnitud es temperatura y las unidades coinciden con alguno de los elementos del array temperatura
+        return validarcantidad(cantidad) 
 }
     else {
-        return`error: ${unidadmedida} no es compatible`;
+        return`error: ${unidadmedida} no es compatible`;// corre si la magnitud es temperatura pero las unidades no coinciden 
 }
 }
 else if (magnitud === "masa") {
        const validarunidad = masa.some(masa => masa.unidad === unidadmedida|| masa.simbolo === unidadmedida);
     if (validarunidad === true){
-        return`bien, la unidad que elegiste son ${unidadmedida}`;
-    } 
+        `bien, la unidad que elegiste son ${unidadmedida}`;// corre si la magnitud es masa y la unidad coincide con alguno de los elementos del array masa
+        return validarcantidad(cantidad) 
+} 
     else {
-        return`error: ${unidadmedida} no es compatible`;
+        return`error: ${unidadmedida} no es compatible`;// corre si la magnitud es masa pero las unidades no coinciden 
 }
 }
 else {
-    return`error: unidades no compatibles`
+    
+    return`error: magnitud no compatible`;//corre si la magnitud 
 }
 }
+// la función anterior valida la unidad de medida por medio de los condicionales if, else if, else
 
-function validarcantidad(cantidad){
+function validarcantidad(cantidad){     // función para validar la cantidad de unidades 
+console.log(`ahora dame la cantidad o valor`)
 if (Number.isFinite(cantidad)  &&( magnitud === "temperatura"|| magnitud === "longitud"|| magnitud === "masa")){
-    return `${cantidad} ${unidadmedida} equivalen a:`
+    `${cantidad} ${unidadmedida} equivalen a:`
+    return conversion(cantidad)
 }
 else if (!Number(cantidad)){
-    return `error: ${cantidad} no es un número`;
+    console.log (`error: ${cantidad} no es un número`);//corre si la cantidad no es un número
+    return 
 }
 else if  (!Number.isFinite(cantidad)){
-    return `error: ${cantidad} no es finito`;
+    console.log (`error: ${cantidad} no es finito`);//corre si la cantidad no es finita
+    return 
 }
 else if (cantidad<0 &&( magnitud === "longitud"|| magnitud === "masa")){
-    return `error: no hay ${magnitud} negativas`
+    console.log (`error: no hay ${magnitud} negativas`);//corre si la masa o la longitud son negativas
+    return 
 }
 }
+// la función anterior valida la cantidad por medio de los condicionales if, else if, else
 
-function conversion(cantidad){
-if(magnitud === "temperatura" && (unidadmedida === "grados celcius"|| unidadmedida ==="°C"||unidadmedida === "grados centigrados")){
+function conversion(cantidad){          // función para convertir las unidades y hacer una tabla de ellas 
+console.log(`${cantidad} ${unidadmedida} equivalen a:`)
+// comparación y conversión de las unidades de temperatura 
+if(magnitud === "temperatura" && (unidadmedida === "grados celcius"|| unidadmedida ==="°C"||unidadmedida === "grados centigrados")){//validación de las unidades
     temperatura = [ 
     // unidades de temperatura 
     { valor:cantidad,unidad: "grados celcius", simbolo: "°C",equivalencia:1},
     { valor:(cantidad* 9/5) + 32,unidad: "grados farenheit", simbolo: "°F",equivalencia:(1* 9/5) + 32},
     { valor:cantidad+273.15,unidad: "kelvin", simbolo: "K",equivalencia:274.15}]
-    console.table(temperatura)
+    console.table(temperatura) //imprime una tabla con las unidades y sus respectivos valores
 }
-else if(magnitud === "temperatura" && (unidadmedida === "grados farenheit"|| unidadmedida ==="°F")){
+else if(magnitud === "temperatura" && (unidadmedida === "grados farenheit"|| unidadmedida ==="°F")){//validación de las unidades
     temperatura = [ 
     // unidades de temperatura
     { valor:cantidad,unidad: "grados farenheit",simbolo: "°F",equivalencia:1},
     { valor:(cantidad-32)*(5/9),unidad: "grados celcius/centigrados", simbolo: "°C",equivalencia:(1-32)*(5/9)},
     { valor:(1-32)*(5/9)+ 273.15,unidad: "kelvin", simbolo: "K",equivalencia:(1-32)*(5/9)+ 273.15}]
-    console.table(temperatura)
+    console.table(temperatura)//imprime una tabla con las unidades y sus respectivos valores
 }
 else if(magnitud === "temperatura" && (unidadmedida ==="kelvin"|| unidadmedida ==="K")){
     temperatura = [ 
@@ -113,7 +133,7 @@ else if(magnitud === "temperatura" && (unidadmedida ==="kelvin"|| unidadmedida =
     { valor:cantidad,unidad: "kelvin", simbolo: "K",equivalencia:1},
     { valor:cantidad-273.15,unidad: "grados celcius", simbolo: "°C",equivalencia:-272.15},
     { valor:(cantidad-273.15)*(9/5)+ 32,unidad: "grados farenheit", simbolo: "°F",equivalencia:(1-273.15)*(9/5)+ 32}]
-    console.table(temperatura)
+    console.table(temperatura)//imprime una tabla con las unidades y sus respectivos valores
 }
 else if (magnitud === "longitud" && (unidadmedida ==="metros"|| unidadmedida ==="m")){
 longitud = [ 
@@ -121,7 +141,7 @@ longitud = [
     { valor:cantidad,unidad: "metros", simbolo: "m",equivalencia:1},
     { valor:100*cantidad,unidad: "centimetros", simbolo: "cm",equivalencia:100},
     { valor:0.001*cantidad,unidad: "kilometros", simbolo: "km",equivalencia:0.001}]
-    console.table(longitud)
+    console.table(longitud)//imprime una tabla con las unidades y sus respectivos valores
 }
 else if(magnitud === "longitud" && (unidadmedida ==="kilometros"|| unidadmedida ==="km")){
     longitud = [ 
@@ -129,7 +149,7 @@ else if(magnitud === "longitud" && (unidadmedida ==="kilometros"|| unidadmedida 
     { valor:cantidad,unidad: "kilometros", simbolo: "km",equivalencia:1},
     { valor:1000*cantidad,unidad: "metros", simbolo: "m",equivalencia:1000},
     { valor:100000*cantidad,unidad: "centimetros", simbolo: "cm",equivalencia:100000}]
-    console.table(longitud)
+    console.table(longitud)//imprime una tabla con las unidades y sus respectivos valores
 }
 else if(magnitud === "longitud" && (unidadmedida ==="centimetros"|| unidadmedida ==="cm")){
     longitud = [ 
@@ -137,7 +157,7 @@ else if(magnitud === "longitud" && (unidadmedida ==="centimetros"|| unidadmedida
     { valor:cantidad,unidad: "centimetros", simbolo: "cm",equivalencia:1},
     { valor:0.01*cantidad,unidad: "metros", simbolo: "m",equivalencia:0.01},
     { valor:0.00001*cantidad,unidad: "kilometros", simbolo: "km",equivalencia:0.00001}]
-    console.table(longitud)
+    console.table(longitud)//imprime una tabla con las unidades y sus respectivos valores
 }
 else if(magnitud === "masa" &&(unidadmedida ==="kilogramos"|| unidadmedida ==="kg")){
     masa = [ 
@@ -145,7 +165,7 @@ else if(magnitud === "masa" &&(unidadmedida ==="kilogramos"|| unidadmedida ==="k
     { valor:cantidad,unidad: "kilogramos", simbolo: "kg",equivalencia:1},
     { valor:1000*cantidad,unidad: "gramos", simbolo: "g",equivalencia:1000},
     { valor:0.001*cantidad,unidad: "toneladas", simbolo: "ton",equivalencia:0.001}]
-    console.table(masa)
+    console.table(masa)//imprime una tabla con las unidades y sus respectivos valores
 }
 else if(magnitud === "masa" && cantidad>0 && (unidadmedida ==="tonelada"|| unidadmedida ==="ton")){
     masa = [ 
@@ -153,7 +173,7 @@ else if(magnitud === "masa" && cantidad>0 && (unidadmedida ==="tonelada"|| unida
     { valor:cantidad,unidad: "toneladas", simbolo: "ton",equivalencia:1},
     { valor:1000*cantidad,unidad: "kilogramos", simbolo: "kg",equivalencia:1000},
     { valor:1000000*cantidad,unidad: "gramos", simbolo: "g",equivalencia:1000000}]
-    console.table(masa)
+    console.table(masa)//imprime una tabla con las unidades y sus respectivos valores
 }
 else if(magnitud === "masa" && cantidad>0 && (unidadmedida ==="gramos"|| unidadmedida ==="g")){
     masa = [ 
@@ -161,7 +181,7 @@ else if(magnitud === "masa" && cantidad>0 && (unidadmedida ==="gramos"|| unidadm
     { valor:cantidad,unidad: "gramos", simbolo: "g",equivalencia:1},
     { valor:0.001*cantidad,unidad: "kilogramos", simbolo: "kg",equivalencia:0.001},
     { valor:0.000001*cantidad,unidad: "toneladas", simbolo: "ton",equivalencia:0.000001}]
-    console.table(masa)
+    console.table(masa)//imprime una tabla con las unidades y sus respectivos valores
 }
 else {
     return `error: algo salió mal`
@@ -173,9 +193,5 @@ console.log("vamos a convertir unidades")
 console.log("comencemos por la magnitud")
 console.log("elige una magnitud(temperatura, longitud, masa)")
 
-console.log(validarmagnitud(magnitud)) //ingresamos la magnitud y la validamos con la función validarmagnitud
-console.log("ahora dame la unidad")
-console.log(validarunidad(unidadmedida)) //ingresamos la unidad y la validadmos con la función validarunidad
-console.log("Dime el valor o cantidad de ",unidadmedida)
-console.log(validarcantidad(cantidad))
-conversion(cantidad)
+validarmagnitud(magnitud) //ingresamos la magnitud y la validamos con la función validarmagnitud
+
