@@ -40,148 +40,217 @@ const expenses = [
   { amount: 20, category: "transport" },
   { amount: 30, category: "food" },
 ];
-// filter 
+// filter
 
-const foodExpenses = expenses.filter((expense) => expense.category === "food"); 
+const foodExpenses = expenses.filter((expense) => expense.category === "food");
 // filter crea un nuevo array con los elementos que cumplen la condición
 console.log(foodExpenses); // Imprime [{ amount: 50, category: "food" }, { amount: 30, category: "food" }]
 
-const totalFoodExpense = foodExpenses.reduce((total, expense) => total + expense.amount, 0);
+const totalFoodExpense = foodExpenses.reduce(
+  (total, expense) => total + expense.amount,
+  0,
+);
 // reduce acumula un valor a través de los elementos del array, en este caso sumando los montos de los gastos de comida
 console.log(totalFoodExpense); // Imprime 80
-
-
 
 // ejercicios
 // map
 // 1 agregar apellido a un grupo de integrantes
-const apellido = " Rodriguez"
-const integrantes =["Gabriel","Andres","Mariana"]
-const familia = integrantes.map(function(integrantes){
-return{
-familia: integrantes + apellido
-}
-})
-console.log(integrantes)
-console.log(familia)
+const apellido = " Rodriguez";
+const integrantes = ["Gabriel", "Andres", "Mariana"];
+const familia = integrantes.map(function (integrantes) {
+  return {
+    familia: integrantes + apellido,
+  };
+});
+console.log(integrantes);
+console.log(familia);
 // 2 ver caracteristica de un producto
 const producto = [
-{tipo:"fruta", nombre:"pera"}, 
-{tipo:"fruta", nombre:"manzana"},
-{tipo:"verdura", nombre:"zanahoria"} 
-]
-const tipo =producto.map(({tipo})=>tipo);
+  { tipo: "fruta", nombre: "pera" },
+  { tipo: "fruta", nombre: "manzana" },
+  { tipo: "verdura", nombre: "zanahoria" },
+];
+const tipo = producto.map(({ tipo }) => tipo);
 
-console.log(tipo)
+console.log(tipo);
 // 3 imprimir nota de alumnos aprobados
 const alumnos = [
-{nota:56, nombre:"Pepito"}, 
-{nota:56, nombre:"Marcos"},
-{nota:40, nombre:"Juan"} 
-]
-const aprobados = alumnos.map(function(alumnos){
-if(alumnos.nota>=50)
-  return `${alumnos.nombre} aprobó con: ${alumnos.nota}`;
-else if (alumnos.nota<50)
-  return `${alumnos.nombre} reprobó con: ${alumnos.nota}`;
-})
-console.log(aprobados) 
-// 4 claisificar mayor o menor de edad
+  { nota: 56, nombre: "Pepito" },
+  { nota: 56, nombre: "Marcos" },
+  { nota: 40, nombre: "Juan" },
+];
+const aprobados = alumnos.map(function (alumnos) {
+  if (alumnos.nota >= 50)
+    return `${alumnos.nombre} aprobó con: ${alumnos.nota}`;
+  else if (alumnos.nota < 50)
+    return `${alumnos.nombre} reprobó con: ${alumnos.nota}`;
+});
+console.log(aprobados);
+// 4 clasificar mayor o menor de edad
 const edad = [
-{edad:26, nombre:"Pepito"}, 
-{edad:16, nombre:"Marcos"},
-{edad:19, nombre:"Juan"} 
-]
-const adultos= edad.map(function(edad){
-if (edad.edad>=18)
-  return `${edad.nombre}, eres mayor de edad`
-else if (edad.edad<18)
-  return `${edad.nombre}, eres menor de edad`
-})
-
-console.log(adultos)
+  { edad: 26, nombre: "Pepito" },
+  { edad: 16, nombre: "Marcos" },
+  { edad: 19, nombre: "Juan" },
+];
+const adultos = edad.map(function (edad) {
+  if (edad.edad >= 18) return `${edad.nombre}, eres mayor de edad`;
+  else if (edad.edad < 18) return `${edad.nombre}, eres menor de edad`;
+});
+console.log(adultos);
 // 5 identificar tipos de datos
 
-const datos = [false,"a",4,true] 
-const tipoDato =datos.map(datos=>typeof(datos))
-console.table(tipoDato)
+const datos = [false, "a", 4, true];
+const tipoDato = datos.map((datos) => typeof datos);
+console.table(tipoDato);
 
 // filter
 // 1 clasificar zapatos por tallas para una tienda
-const zapatos =[{marca:"nike",talla:35},
-{marca:"jordan",talla:34},
-{marca:"jordan",talla:36},
-{marca:"jordan",talla:34}
+const zapatos = [
+  { marca: "nike", talla: 35 },
+  { marca: "jordan", talla: 34 },
+  { marca: "jordan", talla: 36 },
+  { marca: "jordan", talla: 34 },
 ];
-const tallaZapatos = zapatos.filter(zapato => zapato.talla === 34);
+const tallaZapatos = zapatos.filter((zapato) => zapato.talla === 34);
 console.table(tallaZapatos);
 
 // 2 clasificar ropa
 
-const ropa =[{tipo:"camisa",talla:"s"},
-{tipo:"zapatos",talla:"37"},
-{tipo:"pantalón",talla:"30"},
-{tipo:"camisa",talla:"m"}
+const ropa = [
+  { tipo: "camisa", talla: "s" },
+  { tipo: "zapatos", talla: "37" },
+  { tipo: "pantalón", talla: "30" },
+  { tipo: "camisa", talla: "m" },
 ];
-const prendas = ropa.filter(ropa =>(ropa.tipo == "camisa" )||( ropa.tipo == "pantalón"))
+const prendas = ropa.filter(
+  (ropa) => ropa.tipo == "camisa" || ropa.tipo == "pantalón",
+);
 
-console.table(prendas)
+console.table(prendas);
 
 // 3 encontrar productos por tipo
 
-const productos =[{tipo:"fruta",nombre:"pera"},
-{tipo:"ropa",nombre:"camiseta"},
-{tipo:"ropa",nombre:"camisa"},
-{tipo:"fruta",nombre:"manzana"}
+let productos = [
+  { tipo: "fruta", nombre: "pera" },
+  { tipo: "ropa", nombre: "camiseta" },
+  { tipo: "ropa", nombre: "camisa" },
+  { tipo: "fruta", nombre: "manzana" },
 ];
-const tipoProducto = productos.filter(producto =>producto.tipo == "fruta" )
+const tipoProducto = productos.filter((producto) => producto.tipo == "fruta");
 
-console.table(tipoProducto)
+console.table(tipoProducto);
 
-// 4 clasificar vendedores con 10 productos o más 
+// 4 clasificar vendedores con 10 productos o más
 
-const vendedores =[{np: 2,nombre:"pedro"},
-{np: 5,nombre:"eustaquio"},
-{np: 10,nombre:"esteban"},
-{np: 20,nombre:"pablo"}
+const vendedores = [
+  { np: 2, nombre: "pedro" },
+  { np: 5, nombre: "eustaquio" },
+  { np: 10, nombre: "esteban" },
+  { np: 20, nombre: "pablo" },
 ];
-const masProductos = vendedores.filter(vendedores =>vendedores.np >=10 )
+const masProductos = vendedores.filter((vendedores) => vendedores.np >= 10);
 
-console.table(masProductos)
+console.table(masProductos);
 
 // 5 clasificar usuarios
 
-const usuarios =[{tUsuario: "vendedor",nombre:"pedro"},
-{tUsuario: "cliente",nombre:"eustaquio"},
-{tUsuario: "empresa",nombre:"esteban"},
-{tUsuario: "cliente",nombre:"pablo"}
+const usuarios = [
+  { tUsuario: "vendedor", nombre: "pedro" },
+  { tUsuario: "cliente", nombre: "eustaquio" },
+  { tUsuario: "empresa", nombre: "esteban" },
+  { tUsuario: "cliente", nombre: "pablo" },
 ];
-const clientes =usuarios.filter(({tUsuario})=> tUsuario == "cliente")
+const clientes = usuarios.filter(({ tUsuario }) => tUsuario == "cliente");
 
-console.table(clientes)
+console.table(clientes);
 
-// reduce 
+// reduce
 
 // 1 saber el número de productos que tiene cada vendedor
 
-const uVendedores = [{numProductos: 4,nombre:"pedro"},
-{numProductos: 7,nombre:"eustaquio"},
-{numProductos: 8,nombre:"esteban"},
-{numProductos: 4,nombre:"pablo"}
+const uVendedores = [
+  { numProductos: 4, nombre: "pedro" },
+  { numProductos: 7, nombre: "eustaquio" },
+  { numProductos: 8, nombre: "esteban" },
+  { numProductos: 4, nombre: "pablo" },
 ];
-const numProduSistema =uVendedores.reduce((acumulador,uVendedores)=> acumulador + uVendedores.numProductos,0)
+const numProduSistema = uVendedores.reduce(
+  (acumulador, uVendedores) => acumulador + uVendedores.numProductos,
+  0,
+);
 
-console.log(numProduSistema)
+console.log(numProduSistema);
 
 // 2 contar la cantidad de ingresos a una pagina
 
-const ingresos =["ingreso","cierre de sesión","ingreso","ingreso","cierre de sesión","ingreso"]
+const ingresos = [
+"ingreso",
+  "cierre de sesión",
+  "ingreso",
+  "ingreso",
+  "cierre de sesión",
+  "ingreso",
+];
 
-const numIngresos=ingresos.reduce((contador,numIngresos)=> {
-  if (numIngresos!="ingreso")
-  return contador
-  if (numIngresos=="ingreso")
-  return contador +1
-},0)
+const numIngresos = ingresos.reduce((contador, numIngresos) => {
+  if (numIngresos != "ingreso") return contador;
+  if (numIngresos == "ingreso") return contador + 1;
+}, 0);
 
-console.log(numIngresos)
+console.log(`ingresos/inicios de sesión: ${numIngresos}`);
+
+// 3 calcular el total de de un carrito 
+
+const carrito =[
+{producto:"computador",precio:200000},
+{producto:"muose",precio:20000},
+{producto:"teclado",precio:45000},
+{producto:"usb",precio:10000},
+{producto:"cargador",precio:100000}
+]
+
+const totalCarrito = carrito.reduce((numpdts,{precio})=>
+numpdts+ precio,0)
+
+console.log(`precio total de productos del carrito: ${totalCarrito}`)
+
+// 4 agrupar categorias
+
+productos = [
+{nombre:"manzana",categoria:"comida"},
+{nombre:"tapete",categoria:"hogar"},
+{nombre:"trapero",categoria:"hogar"},
+{nombre:"trapero",categoria:"aseo"},
+{nombre:"pera",categoria:"comida"},
+];
+
+const porCategoria = productos.reduce((obj,producto)=>{
+if  (!obj[producto.categoria])
+{
+  obj[producto.categoria] =[];
+}
+
+obj[producto.categoria].push(producto.nombre);
+return obj;
+},{})
+
+console.log(productos);
+console.log({porCategoria});
+
+// 5  ejemplo reduce clasificar tipos de productos
+
+productos = [
+{ nombre: "Monitor", tipo: "Electrónica", precio: 200 },
+{ nombre: "Teclado", tipo: "Electrónica", precio: 50 },
+{ nombre: "Manzana", tipo: "Alimentos", precio: 2 },
+{ nombre: "Pan", tipo: "Alimentos", precio: 1 },
+{ nombre: "Silla", tipo: "Hogar", precio: 120 }
+];
+const tipos = productos.reduce((tipo,producto)=>{
+if (!tipo[producto.nombre])
+{tipo[producto.nombre]= []};
+tipo[producto.tipo].push(producto.nombre);
+return producto;
+},{})
+console.log(tipos);
